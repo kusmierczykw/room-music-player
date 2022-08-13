@@ -11,7 +11,7 @@
 
     @include border.border-radius;
 
-    &__image {
+    &__avatar {
       img {
         height: variables.$size-128;
         width: variables.$size-128;

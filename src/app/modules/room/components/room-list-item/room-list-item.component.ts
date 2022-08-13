@@ -10,5 +10,5 @@ import { Room } from '../../../room/models/room';
   styleUrls: ['./room-list-item.component.scss'],
 })
 export class RoomListItemComponent {
-  @Input() item!: Room;
+  @Input() room!: Room;
 }

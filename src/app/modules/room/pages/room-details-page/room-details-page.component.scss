@@ -1,5 +1,11 @@
+@use 'src/styles/utils/box-shadow';
+
 :host {
   .room-details {
+    &__avatar {
+      @include box-shadow.shadow-2;
+    }
+
     &__header {
       display: flex;
       align-items: center;

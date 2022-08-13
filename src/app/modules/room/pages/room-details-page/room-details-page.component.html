@@ -1,5 +1,7 @@
 <div class="room-details__header">
-  <app-room-avatar size="16rem"></app-room-avatar>
+  <div class="room-details__avatar">
+    <app-room-avatar size="16rem"></app-room-avatar>
+  </div>
 
   <ng-container *ngIf="room$ | async as room">
     <div class="p-5">

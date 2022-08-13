@@ -1,10 +1,7 @@
 <div class="row row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-1 g-3">
   <ng-container *ngFor="let room of rooms$ | async">
-    <a
-      class="text-decoration-inherit text-color-inherit"
-      [routerLink]="room | roomDetailsRouterLink"
-    >
+    <app-room-tile-router-link [id]="room.id">
       <app-room-tile [name]="room.name"></app-room-tile>
-    </a>
+    </app-room-tile-router-link>
   </ng-container>
 </div>
