@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  angular:
+    container_name: web-angular
+    tty: true
+    build:
+      context: ./angular
+    ports:
+      - ${ANGULAR_PORT}:4200
+    volumes:
+      - ../:/web
+
+networks:
+  application:
+    name: room-music-player.pl

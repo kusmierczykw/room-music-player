@@ -1,0 +1,19 @@
+:host {
+  ::ng-deep .p-menubar {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+      color: black;
+
+      .p-menuitem-text {
+        color: inherit !important;
+      }
+
+      &:not(.p-disabled):hover {
+        background-color: rgb(0 0 0 / 10%);
+      }
+    }
+  }
+}

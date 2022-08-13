@@ -1,0 +1,32 @@
+@use 'src/styles/utils/box-shadow';
+@use 'src/styles/utils/border';
+@use 'src/styles/variables';
+
+:host {
+  .room-tile {
+    background-color: variables.$light;
+    display: flex;
+    align-items: center;
+    color: inherit;
+
+    @include border.border-radius;
+
+    &__image {
+      img {
+        height: variables.$size-128;
+        width: variables.$size-128;
+        object-fit: cover;
+      }
+    }
+
+    &__title {
+      padding: variables.$size-16;
+      font-weight: bold;
+      color: inherit;
+    }
+
+    &:hover {
+      @include box-shadow.shadow-1;
+    }
+  }
+}
