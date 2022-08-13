@@ -1,0 +1,7 @@
+@use 'src/styles/utils/box-shadow';
+
+:host {
+  @include box-shadow.shadow-2;
+
+  display: inline-flex;
+}

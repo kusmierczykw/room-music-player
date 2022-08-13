@@ -1,0 +1,15 @@
+<p-orderList
+  [value]="data!"
+  [controlsVisibility]="controlsVisibility"
+>
+  <ng-template
+    let-item
+    pTemplate="item"
+  >
+    <ng-container
+      [ngTemplateOutlet]="itemTemplateRef!"
+      [ngTemplateOutletContext]="{ item }"
+    >
+    </ng-container>
+  </ng-template>
+</p-orderList>

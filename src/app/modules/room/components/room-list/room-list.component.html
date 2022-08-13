@@ -1,0 +1,11 @@
+<app-order-list
+  [data]="rooms"
+  [itemTemplateRef]="itemTemplateRef"
+></app-order-list>
+
+<ng-template
+  #itemTemplateRef
+  let-item="item"
+>
+  <app-room-list-item [item]="item"></app-room-list-item>
+</ng-template>

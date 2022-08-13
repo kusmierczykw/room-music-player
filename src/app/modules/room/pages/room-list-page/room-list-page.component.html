@@ -1,0 +1,7 @@
+<button
+  pButton
+  label="Dodaj"
+  (click)="handleAddClick()"
+></button>
+
+<app-room-list [rooms]="roomList$ | async"></app-room-list>
