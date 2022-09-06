@@ -1,4 +1,9 @@
-@mixin panel-menu($border-radius: 6px, $outline-color: #bfdbfe) {
+@mixin panel-menu(
+  $border-radius: 6px,
+  $outline-color: #bfdbfe,
+  $text-color: #6c757d,
+  $text-highlight-color: $text-color
+) {
   .p-panelmenu-header {
     > a {
       border-color: transparent;
@@ -14,6 +19,7 @@
       border-bottom-left-radius: $border-radius;
       border-color: transparent;
       background-color: transparent;
+      color: $text-highlight-color;
     }
   }
 }

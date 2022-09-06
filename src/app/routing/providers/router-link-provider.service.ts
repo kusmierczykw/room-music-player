@@ -13,35 +13,15 @@ import { RouterPathParam } from '@routing/enums/router-path-param';
 })
 export class RouterLinkProviderService {
   private routerLinks: Record<RouterPath, RouterLinkParts> = {
-    [RouterPath.PLAYER]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.PLAYER,
-    ],
-    [RouterPath.ROOMS]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.ROOMS,
-    ],
-    [RouterPath.ROOM_CREATE]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.ROOMS,
-      RouterPathFragment.CREATE,
-    ],
-    [RouterPath.ROOM_DETAILS]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.ROOMS,
-      RouterPathParam.ROOM_ID,
-    ],
-    [RouterPath.ROOM_NOT_FOUND]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.ROOMS,
-      RouterPathFragment.NOT_FOUND,
-    ],
     [RouterPath.ROOT]: [
       RouterPathFragment.ROOT, //
     ],
-    [RouterPath.USERS]: [
-      RouterPathFragment.ROOT, //
-      RouterPathFragment.USERS,
+
+    [RouterPath.ROOM_UPDATE]: [
+      RouterPathFragment.ROOT,
+      RouterPathFragment.ROOMS,
+      RouterPathParam.ROOM_ID,
+      RouterPathFragment.UPDATE,
     ],
   };
 

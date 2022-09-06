@@ -4,7 +4,6 @@ import { MenuItem } from '@shared/menu/models/menu-item';
 import { OnlyVisibleItemsPipe } from '@shared/menu/pipes/only-visible-item.pipe';
 import { Nil } from '@utils/types/nil';
 import { MenuItemTemplate } from '@shared/menu/interfaces/menu-item-template';
-import { MenuItemType } from '@shared/menu/enums/menu-item-type';
 import { PrimengMenuItemsConverterPipe } from '@shared/menu/pipes/primeng-menu-items-converter.pipe';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 
@@ -23,6 +22,4 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 export class MenuComponent {
   @Input() items!: MenuItem[];
   @Input() template?: Nil<TemplateRef<MenuItemTemplate>>;
-
-  readonly MenuItemType = MenuItemType;
 }

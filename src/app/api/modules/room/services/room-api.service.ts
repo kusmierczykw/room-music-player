@@ -1,21 +1,13 @@
 import { Injectable } from '@angular/core';
 import { RoomApi } from '../interfaces/room-api';
-import { CollectionResponse } from '@api/common/collection-response';
-import { RoomCollectionItemResponse } from '@api/modules/room/responses/room-collection-item-response';
-import { UnimplementedMethodException } from '@core/exceptions/unimplemented-method-exception';
+import { CreateRoomRequest } from '@api/modules/room/requests/create-room.request';
+import { CreateRoomResponse } from '@api/modules/room/responses/create-room.response';
 import { Observable } from 'rxjs';
-import { Uuid } from '@core/uuid/types/uuid';
-import { RoomDetailsResponse } from '@api/modules/room/responses/room-details.response';
+import { UnimplementedMethodException } from '@core/exceptions/unimplemented-method-exception';
 
 @Injectable()
 export class RoomApiService implements RoomApi {
-  fetchCollection(): Observable<
-    CollectionResponse<RoomCollectionItemResponse>
-  > {
-    throw new UnimplementedMethodException();
-  }
-
-  fetchDetails(id: Uuid): Observable<RoomDetailsResponse> {
+  create(request: CreateRoomRequest): Observable<CreateRoomResponse> {
     throw new UnimplementedMethodException();
   }
 }
