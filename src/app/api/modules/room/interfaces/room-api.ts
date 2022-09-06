@@ -1,11 +1,7 @@
-import { RoomCollectionItemResponse } from '../responses/room-collection-item-response';
-import { CollectionResponse } from '@api/common/collection-response';
 import { Observable } from 'rxjs';
-import { Uuid } from '@core/uuid/types/uuid';
-import { RoomDetailsResponse } from '@api/modules/room/responses/room-details.response';
+import { CreateRoomRequest } from '@api/modules/room/requests/create-room.request';
+import { CreateRoomResponse } from '@api/modules/room/responses/create-room.response';
 
 export interface RoomApi {
-  fetchCollection(): Observable<CollectionResponse<RoomCollectionItemResponse>>;
-
-  fetchDetails(id: Uuid): Observable<RoomDetailsResponse>;
+  create(request: CreateRoomRequest): Observable<CreateRoomResponse>;
 }

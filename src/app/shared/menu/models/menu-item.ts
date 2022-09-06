@@ -8,7 +8,7 @@ export class MenuItem {
   readonly visibility$: Observable<boolean>;
 
   constructor(
-    private readonly visible$: Observable<boolean>,
+    private readonly _visibility$: Observable<boolean>,
     readonly label: string,
     readonly type: MenuItemType,
     readonly routerLink?: Nil<RouterLink>,
@@ -20,16 +20,16 @@ export class MenuItem {
   }
 
   clone(update?: {
-    visible$?: Observable<boolean>;
+    visibility$?: Observable<boolean>;
     label?: string;
     children?: Nil<MenuItem[]>;
   }): MenuItem {
     const label = update?.label ?? this.label;
-    const visible$ = update?.visible$ ?? this.visible$;
+    const visibility$ = update?.visibility$ ?? this._visibility$;
     const children = update?.children ?? this.children;
 
     return new MenuItem(
-      visible$,
+      visibility$,
       label,
       this.type,
       this.routerLink,
@@ -40,7 +40,7 @@ export class MenuItem {
   }
 
   private visibilitySource$(): Observable<boolean> {
-    return this.visible$
+    return this._visibility$
       .pipe(
         switchMap((visible) => {
           if (!visible) {
