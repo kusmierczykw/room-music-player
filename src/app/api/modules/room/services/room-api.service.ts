@@ -7,9 +7,12 @@ import { UnimplementedMethodException } from '@core/exceptions/unimplemented-met
 import { FetchByIdRequest } from '@api/common/requests/fetch-by-id-request';
 import { RoomResponse } from '@api/modules/room/responses/room-response';
 import { CollectionResponse } from '@api/common/responses/collection-response';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class RoomApiService implements RoomApi {
+  constructor(private readonly httpClient: HttpClient) {}
+
   create(request: CreateRoomRequest): Observable<CreateRoomResponse> {
     throw new UnimplementedMethodException();
   }
