@@ -9,7 +9,8 @@ import { RouterPathParam } from '@routing/enums/router-path-param';
 import { RouterLinkNavigateService } from '@routing/services/router-link-navigate.service';
 import { MenuItemCommand } from '@shared/menu/types/menu-item-command';
 import { Uuid } from '@core/uuid/types/uuid';
-import { CreateRoomActionService } from '@scaffolds/services/create-room-action.service';
+import { CreateRoomActionService } from '@modules/room/services/create-room-action.service';
+import { once } from '@utils/rx/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -42,9 +43,12 @@ export class SidebarMenuProviderService implements MenuProvider {
 
   private createRoomCommand(): MenuItemCommand {
     return () => {
-      this.createRoomAction.create().subscribe({
-        next: ({ id }) => this.navigateToRoomUpdate(id),
-      });
+      this.createRoomAction
+        .create()
+        .pipe(once())
+        .subscribe({
+          next: ({ id }) => this.navigateToRoomUpdate(id),
+        });
     };
   }
 

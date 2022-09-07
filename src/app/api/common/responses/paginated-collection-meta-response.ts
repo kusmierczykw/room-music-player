@@ -1,4 +1,4 @@
-export class CollectionMetaResponse {
+export class PaginatedCollectionMetaResponse {
   constructor(
     readonly page: number,
     readonly limit: number,
