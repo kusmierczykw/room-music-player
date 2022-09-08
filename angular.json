@@ -27,7 +27,7 @@
         },
         "@schematics/angular:guard": {
           "skipTests": true
-        },
+        }
       },
       "root": "",
       "sourceRoot": "src",
