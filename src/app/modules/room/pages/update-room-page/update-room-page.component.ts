@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { FetchRoomActionService } from '@modules/room/services/fetch-room-action.service';
 import { map, Observable, switchMap } from 'rxjs';
 import { Room } from '@modules/room/models/room';
 import { RouterPathParam } from '@routing/enums/router-path-param';
-import { FetchRoomActionService } from '@modules/room/services/fetch-room-action.service';
 import { Uuid } from '@core/uuid/types/uuid';
 
 @Component({
