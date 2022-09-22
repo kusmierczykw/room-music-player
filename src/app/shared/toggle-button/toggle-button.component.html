@@ -1,0 +1,10 @@
+<p-button
+  styleClass="p-button-rounded p-button-text"
+  [pTooltip]="checked ? checkedLabel : uncheckedLabel"
+  [tooltipDisabled]="tooltipDisabled"
+  (onClick)="handleClick()"
+>
+  <ng-template pTemplate="content">
+    <app-icon [icon]="checked ? checkedIcon : uncheckedIcon"></app-icon>
+  </ng-template>
+</p-button>

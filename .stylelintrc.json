@@ -1,0 +1,20 @@
+{
+  "plugins": ["stylelint-scss"],
+  "extends": [
+    "stylelint-prettier",
+    "stylelint-prettier/recommended",
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "no-empty-source": null,
+    "string-quotes": "single",
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["ng-deep", "host"]
+      }
+    ],
+    "scss/dollar-variable-pattern": "^([a-z_][a-z0-9]*)(-[a-z0-9]+)*$"
+  }
+}

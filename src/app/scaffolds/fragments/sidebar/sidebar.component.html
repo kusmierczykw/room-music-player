@@ -1,0 +1,17 @@
+<div class="sidebar__header">
+  <app-logo-router-link></app-logo-router-link>
+</div>
+
+<div class="sidebar__menu">
+  <ng-container *ngIf="mainMenu$ | async as menu">
+    <app-panel-menu [menu]="menu"></app-panel-menu>
+  </ng-container>
+</div>
+
+<app-divider></app-divider>
+
+<div class="sidebar__menu sidebar__menu--scrollable">
+  <ng-container *ngIf="roomMenu$ | async as menu">
+    <app-panel-menu [menu]="menu"></app-panel-menu>
+  </ng-container>
+</div>

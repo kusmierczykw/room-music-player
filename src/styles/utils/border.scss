@@ -1,0 +1,7 @@
+@mixin border-all($width: 1px, $style: solid, $color: rgba(0, 0, 0, 0.2)) {
+  border: $width $style $color;
+}
+
+@mixin border-radius($size: 0.25rem) {
+  border-radius: $size;
+}

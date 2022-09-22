@@ -1,0 +1,15 @@
+@mixin shadow-2() {
+  @include shadow($shadow: 0 0 2rem -0.25rem);
+}
+
+@mixin shadow-1() {
+  @include shadow;
+}
+
+@mixin shadow-0() {
+  box-shadow: none;
+}
+
+@mixin shadow($shadow: 0 0 1rem -0.25rem, $color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: $shadow $color;
+}
