@@ -18,6 +18,10 @@ export class RoomFakeApiService implements RoomApi {
       id: 'f8deca0f-fd78-4451-937d-d63ad171a5e8',
       name: 'Ten lepszy pokój',
     },
+    {
+      id: '432383fd-f506-4dc0-98f4-ed0fa69da06c',
+      name: 'Pokój u Darka',
+    },
   ];
 
   create(request: CreateRoomRequest): Observable<CreateRoomResponse> {

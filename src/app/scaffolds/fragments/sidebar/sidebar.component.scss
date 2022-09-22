@@ -17,5 +17,11 @@ $sidebar-padding: 0 1rem;
       justify-content: center;
       align-items: center;
     }
+
+    &__menu {
+      &--scrollable {
+        overflow: auto;
+      }
+    }
   }
 }

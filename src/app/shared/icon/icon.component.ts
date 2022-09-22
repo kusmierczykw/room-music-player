@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconPipe } from '@core/icons/pipes/icon.pipe';
-import { Icon } from '@core/icons/enums/icon';
+import { IconPipe } from '@core/assets/icons/pipes/icon.pipe';
+import { Icon } from '@core/assets/icons/enums/icon';
 
 @Component({
   selector: 'app-icon',

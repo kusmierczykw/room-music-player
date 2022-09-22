@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Icon } from '@core/icons/enums/icon';
+import { Icon } from '@core/assets/icons/enums/icon';
 
 @Injectable({
   providedIn: 'root',

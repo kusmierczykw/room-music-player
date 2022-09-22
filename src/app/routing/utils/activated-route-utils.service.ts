@@ -73,6 +73,10 @@ export class ActivatedRouteUtilsService {
     return this.param$(param, route) as Observable<Uuid>;
   }
 
+  uuidParam(param: RouterPathParam, route: ActivatedRoute): Uuid {
+    return this.param(param, route) as Uuid;
+  }
+
   numberParam$(
     param: RouterPathParam,
     route: ActivatedRoute,

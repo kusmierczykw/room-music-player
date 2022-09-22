@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { MenuItem } from '@shared/menu/models/menu-item';
 import { PrimengMenuItemsConverterPipe } from '@shared/menu/pipes/primeng-menu-items-converter.pipe';
-import { Nil } from '@utils/types/nil';
 import { OnlyVisibleItemsPipe } from '@shared/menu/pipes/only-visible-item.pipe';
+import { Menu } from '@shared/menu/models/menu';
 
 @Component({
   selector: 'app-panel-menu',
@@ -19,5 +18,5 @@ import { OnlyVisibleItemsPipe } from '@shared/menu/pipes/only-visible-item.pipe'
   styleUrls: ['./panel-menu.component.scss'],
 })
 export class PanelMenuComponent {
-  @Input() items!: Nil<MenuItem[]>;
+  @Input() menu!: Menu;
 }

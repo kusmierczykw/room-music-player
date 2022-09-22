@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AssetImage } from '@core/assets/image/enums/asset-image';
-import { AssetImageUrl } from '@core/assets/types/asset-image-url';
+import { AssetImageUrl } from '@core/assets/image/types/asset-image-url';
 
 @Injectable({
   providedIn: 'root',

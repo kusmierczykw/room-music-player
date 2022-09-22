@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { MenuItem } from '@shared/menu/models/menu-item';
+import { Menu } from '@shared/menu/models/menu';
 
 export interface MenuProvider {
-  source$(): Observable<MenuItem[]>;
+  source$(): Observable<Menu>;
 }
