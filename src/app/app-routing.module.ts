@@ -12,21 +12,8 @@ const routes: Routes = [
     children: [
       {
         path: RouterPathFragment.ROOMS,
-        children: [
-          {
-            path: `:${RouterPathParam.ROOM_ID}`,
-            children: [
-              {
-                path: RouterPathFragment.UPDATE,
-                title: 'Edycja pokoju',
-                loadComponent: () =>
-                  import(
-                    '@modules/room/pages/update-room-page/update-room-page.component'
-                  ).then((c) => c.UpdateRoomPageComponent),
-              },
-            ],
-          },
-        ],
+        loadChildren: () =>
+          import('@modules/room/room.module').then((m) => m.RoomModule),
       },
     ],
   },
