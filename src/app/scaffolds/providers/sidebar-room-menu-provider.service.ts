@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MenuProvider } from '@shared/menu/abstracts/menu-provider';
-import { Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Menu } from '@shared/menu/models/menu';
 import { RoomsProviderService } from '@modules/room/providers/rooms-provider.service';
 import { MenuItemBuilderService } from '@shared/menu/builders/menu-item-builder.service';
 import { RouterLinkProviderService } from '@routing/providers/router-link-provider.service';
+import { RouterPath } from '@routing/enums/router-path';
+import { RouterPathParam } from '@routing/enums/router-path-param';
 
 @Injectable({
   providedIn: 'root',
@@ -17,24 +19,22 @@ export class SidebarRoomMenuProviderService implements MenuProvider {
   ) {}
 
   source$(): Observable<Menu> {
-    return of(new Menu([]));
-
-    // return this.roomsProvider.rooms$().pipe(
-    //   map(
-    //     (rooms) =>
-    //       new Menu(
-    //         rooms.map(({ id, label }) =>
-    //           this.builder
-    //             .label(label)
-    //             .initRouterLink(() =>
-    //               this.routerLinkProvider.routerLink(RouterPath.ROOM_UPDATE, {
-    //                 [RouterPathParam.ROOM_ID]: id,
-    //               }),
-    //             )
-    //             .build(),
-    //         ),
-    //       ),
-    //   ),
-    // );
+    return this.roomsProvider.rooms$().pipe(
+      map(
+        (rooms) =>
+          new Menu(
+            rooms.map(({ id, label }) =>
+              this.builder
+                .label(label)
+                .initRouterLink(() =>
+                  this.routerLinkProvider.routerLink(RouterPath.ROOM_UPDATE, {
+                    [RouterPathParam.ROOM_ID]: id,
+                  }),
+                )
+                .build(),
+            ),
+          ),
+      ),
+    );
   }
 }

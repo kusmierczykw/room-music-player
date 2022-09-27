@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouterPathFragment } from '@routing/enums/router-path-fragment';
 import { MainScaffoldComponent } from '@scaffolds/components/main-scaffold/main-scaffold.component';
-import { RouterPathParam } from '@routing/enums/router-path-param';
 
 const routes: Routes = [
   {

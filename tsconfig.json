@@ -26,6 +26,7 @@
       "@routing/*": ["src/app/routing/*"],
       "@scaffolds/*": ["src/app/scaffolds/*"],
       "@shared/*": ["src/app/shared/*"],
+      "@store/*": ["src/app/store/*"],
       "@utils/*": ["src/app/utils/*"]
     }
   },
