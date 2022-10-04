@@ -6,6 +6,10 @@ import { Observable, of } from 'rxjs';
 import { MenuProvider } from '@shared/menu/abstracts/menu-provider';
 import { MenuItemCommand } from '@shared/menu/types/menu-item-command';
 import { Menu } from '@shared/menu/models/menu';
+import { RoomService } from '@modules/room/services/room.service';
+import { RouterPathParam } from '@routing/enums/router-path-param';
+import { RouterLinkNavigateService } from '@routing/services/router-link-navigate.service';
+import { Room } from '@store/modules/room/models/room.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +18,8 @@ export class SidebarMainMenuProviderService implements MenuProvider {
   constructor(
     private readonly builder: MenuItemBuilderService,
     private readonly routerLinkProvider: RouterLinkProviderService,
+    private readonly roomAdd: RoomService,
+    private readonly routerLinkNavigate: RouterLinkNavigateService,
   ) {}
 
   source$(): Observable<Menu> {
@@ -37,6 +43,18 @@ export class SidebarMainMenuProviderService implements MenuProvider {
   }
 
   private createRoomCommand(): MenuItemCommand {
-    return () => {};
+    return () => {
+      this.roomAdd.create().subscribe({
+        next: (room) => this.navigateToCreatedRoom(room),
+      });
+    };
+  }
+
+  private navigateToCreatedRoom(room: Room): void {
+    const { id } = room;
+
+    this.routerLinkNavigate.navigate(RouterPath.ROOM_UPDATE, {
+      [RouterPathParam.ROOM_ID]: id,
+    });
   }
 }

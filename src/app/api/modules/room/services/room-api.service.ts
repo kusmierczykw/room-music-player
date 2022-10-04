@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class RoomApiService implements RoomApi {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   create(request: CreateRoomRequest): Observable<CreateRoomResponse> {
     throw new UnimplementedMethodException();

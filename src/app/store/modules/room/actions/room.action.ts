@@ -6,3 +6,7 @@ export const loadRooms = createAction(
   '[Room/API] Load Rooms',
   props<{ rooms: Room[] }>(),
 );
+export const addRoom = createAction(
+  '[Room/API] Add room',
+  props<{ room: Room }>(),
+);

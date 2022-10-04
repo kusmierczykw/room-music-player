@@ -6,6 +6,9 @@ import { roomInitialState } from '../states/room-state';
 export const roomReducer = createReducer(
   roomInitialState,
   on(RoomActions.loadRooms, (state, action) =>
-    roomAdapter.setAll(action.rooms, state),
+    roomAdapter.setAll(action.rooms, { ...state, loaded: true }),
+  ),
+  on(RoomActions.addRoom, (state, action) =>
+    roomAdapter.addOne(action.room, state),
   ),
 );

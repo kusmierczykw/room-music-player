@@ -1,11 +1,15 @@
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StoreFeature } from '@store/enums/store-feature';
 import { RoomState } from '@store/modules/room/states/room-state';
 import { roomAdapter } from '@store/modules/room/adapters/room.adapter';
 
-export const selectRoomFeature = createFeatureSelector<RoomState>(
+export const selectRoomStore = createFeatureSelector<RoomState>(
   StoreFeature.ROOM,
 );
 
-export const { selectAll } = roomAdapter.getSelectors(selectRoomFeature);
+export const { selectAll } = roomAdapter.getSelectors(selectRoomStore);
 export const selectAllRooms = selectAll;
+export const selectRoomsLoaded = createSelector(
+  selectRoomStore,
+  ({ loaded }) => loaded,
+);
