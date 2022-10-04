@@ -4,9 +4,9 @@ import { CreateRoomRequest } from '@api/modules/room/requests/create-room-reques
 import { CreateRoomResponse } from '@api/modules/room/responses/create-room-response';
 import { Observable } from 'rxjs';
 import { UnimplementedMethodException } from '@core/exceptions/unimplemented-method-exception';
-import { FetchByIdRequest } from '@api/common/requests/fetch-by-id-request';
+import { FetchByIdRequest } from '@api/modules/common/requests/fetch-by-id-request';
 import { RoomResponse } from '@api/modules/room/responses/room-response';
-import { CollectionResponse } from '@api/common/responses/collection-response';
+import { CollectionResponse } from '@api/modules/common/responses/collection-response';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()

@@ -3,6 +3,7 @@ import { RouterLink } from '@routing/types/router-link';
 import { MenuItemCommand } from '../types/menu-item-command';
 import { isNil, Nil } from '@utils/types/nil';
 import { combineLatest, map, Observable, of, startWith, switchMap } from 'rxjs';
+import { Icon } from '@core/assets/icons/enums/icon';
 
 export class MenuItem {
   readonly visibility$: Observable<boolean>;
@@ -15,28 +16,9 @@ export class MenuItem {
     readonly link?: Nil<string>,
     readonly command?: Nil<MenuItemCommand>,
     readonly children?: Nil<MenuItem[]>,
+    readonly icon?: Nil<Icon>,
   ) {
     this.visibility$ = this.visibilitySource$();
-  }
-
-  clone(update?: {
-    visibility$?: Observable<boolean>;
-    label?: string;
-    children?: Nil<MenuItem[]>;
-  }): MenuItem {
-    const label = update?.label ?? this.label;
-    const visibility$ = update?.visibility$ ?? this._visibility$;
-    const children = update?.children ?? this.children;
-
-    return new MenuItem(
-      visibility$,
-      label,
-      this.type,
-      this.routerLink,
-      this.link,
-      this.command,
-      children,
-    );
   }
 
   private visibilitySource$(): Observable<boolean> {

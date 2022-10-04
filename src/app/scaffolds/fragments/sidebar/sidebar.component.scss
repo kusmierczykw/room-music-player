@@ -1,3 +1,5 @@
+@use 'src/styles/overrides/mixins/panel-menus';
+
 $sidebar-background-color: white;
 $sidebar-height: 100%;
 $sidebar-header-height: 5rem;
@@ -13,14 +15,21 @@ $sidebar-padding: 0 1rem;
   .sidebar {
     &__header {
       height: $sidebar-header-height;
+      flex: $sidebar-header-height 0 0;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     &__menu {
-      &--scrollable {
+      &.scrollable {
         overflow: auto;
+      }
+
+      &.rooms {
+        ::ng-deep .p-panelmenu {
+          @include panel-menus.panel-menu($item-font-weight: normal);
+        }
       }
     }
   }

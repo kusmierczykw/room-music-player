@@ -1,4 +1,4 @@
-import { CollectionMetaResponse } from '@api/common/responses/collection-meta-response';
+import { CollectionMetaResponse } from '@api/modules/common/responses/collection-meta-response';
 
 export class CollectionResponse<Item> {
   constructor(

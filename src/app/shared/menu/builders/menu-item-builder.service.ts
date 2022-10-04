@@ -6,6 +6,7 @@ import { MenuItem } from '../models/menu-item';
 import { MenuItemType } from '../enums/menu-item-type';
 import { RequiredMethodCallException } from '@core/exceptions/required-method-call-exception';
 import { Observable, of } from 'rxjs';
+import { Icon } from '@core/assets/icons/enums/icon';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,25 @@ export class MenuItemBuilderService {
   private _command: Nil<MenuItemCommand>;
   private _children: Nil<MenuItem[]>;
   private _visible$: Nil<Observable<boolean>>;
+  private _icon: Nil<Icon>;
 
   newInstance(): MenuItemBuilderService {
     return new MenuItemBuilderService();
+  }
+
+  from(item: MenuItem): MenuItemBuilderService {
+    const builder = this.newInstance();
+
+    builder._label = item.label;
+    builder._type = item.type;
+    builder._routerLink = item.routerLink;
+    builder._link = item.link;
+    builder._command = item.command;
+    builder._children = item.children;
+    builder._visible$ = item.visibility$;
+    builder._icon = item.icon;
+
+    return builder;
   }
 
   reset(): this {
@@ -31,6 +48,7 @@ export class MenuItemBuilderService {
     this._command = null;
     this._children = null;
     this._visible$ = null;
+    this._icon = null;
 
     return this;
   }
@@ -43,12 +61,22 @@ export class MenuItemBuilderService {
     return this.type(MenuItemType.ROUTER_LINK).routerLink(factory);
   }
 
+  initMore(factory: (builder: MenuItemBuilderService) => MenuItem[]): this {
+    return this.type(MenuItemType.MORE).children(factory);
+  }
+
   initCommand(factory: () => MenuItemCommand): this {
     return this.type(MenuItemType.COMMAND).command(factory);
   }
 
   label(label: string): this {
     this._label = label;
+
+    return this;
+  }
+
+  icon(icon: Icon): this {
+    this._icon = icon;
 
     return this;
   }
@@ -80,7 +108,7 @@ export class MenuItemBuilderService {
   children(factory: (builder: MenuItemBuilderService) => MenuItem[]): this {
     this._children = factory(this.newInstance());
 
-    return this.type(MenuItemType.SUBMENU);
+    return this.type(MenuItemType.MORE);
   }
 
   visible(visible$: Observable<boolean>): this {
@@ -115,6 +143,7 @@ export class MenuItemBuilderService {
       this._link,
       this._command,
       this._children,
+      this._icon,
     );
 
     this.reset();

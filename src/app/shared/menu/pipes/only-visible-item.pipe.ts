@@ -2,12 +2,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { MenuItem } from '@shared/menu/models/menu-item';
 import { isNil, Nil } from '@utils/types/nil';
 import { combineLatest, map, Observable, of, switchMap } from 'rxjs';
+import { MenuItemBuilderService } from '@shared/menu/builders/menu-item-builder.service';
 
 @Pipe({
   name: 'onlyVisibleItems',
   standalone: true,
 })
 export class OnlyVisibleItemsPipe implements PipeTransform {
+  constructor(private readonly builder: MenuItemBuilderService) {}
+
   transform(items: Nil<MenuItem[]>): Nil<Observable<MenuItem[]>> {
     if (isNil(items)) {
       return items;
@@ -33,7 +36,14 @@ export class OnlyVisibleItemsPipe implements PipeTransform {
 
             const children$ = this.onlyVisibleItems(children);
 
-            return children$.pipe(map((children) => item.clone({ children })));
+            return children$.pipe(
+              map((children) =>
+                this.builder
+                  .from(item)
+                  .children(() => children)
+                  .build(),
+              ),
+            );
           }),
         ),
       ),

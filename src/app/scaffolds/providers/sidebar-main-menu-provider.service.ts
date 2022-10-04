@@ -10,6 +10,7 @@ import { RoomService } from '@modules/room/services/room.service';
 import { RouterPathParam } from '@routing/enums/router-path-param';
 import { RouterLinkNavigateService } from '@routing/services/router-link-navigate.service';
 import { Room } from '@store/modules/room/models/room.model';
+import { Icon } from '@core/assets/icons/enums/icon';
 
 @Injectable({
   providedIn: 'root',
@@ -31,12 +32,14 @@ export class SidebarMainMenuProviderService implements MenuProvider {
           )
           .visible(of(true))
           .label('Home')
+          .icon(Icon.HOUSE_DOOR)
           .build(),
 
         this.builder
           .initCommand(() => this.createRoomCommand())
           .visible(of(true))
           .label('Utwórz pokój')
+          .icon(Icon.PLUS_CIRCLE)
           .build(),
       ]),
     );

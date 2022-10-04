@@ -5,7 +5,7 @@ import { RoomApi } from '@api/modules/room/interfaces/room-api';
 import { Store } from '@ngrx/store';
 import { loadRooms } from '@store/modules/room/actions/room.action';
 import { Room } from '@store/modules/room/models/room.model';
-import { CollectionResponse } from '@api/common/responses/collection-response';
+import { CollectionResponse } from '@api/modules/common/responses/collection-response';
 import { RoomResponse } from '@api/modules/room/responses/room-response';
 
 @Injectable({

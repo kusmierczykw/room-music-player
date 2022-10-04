@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RootStoreModule } from '@store/modules/root/root-store.module';
-import { RoomStoreModule } from '@store/modules/room/room-store.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +19,6 @@ import { RoomStoreModule } from '@store/modules/room/room-store.module';
     HttpClientModule,
     ApiModule,
     RootStoreModule,
-    RoomStoreModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
