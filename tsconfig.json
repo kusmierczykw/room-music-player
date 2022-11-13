@@ -20,14 +20,15 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
-      "@api/*": ["src/app/api/*"],
+      "@infrastructure/*": ["src/app/infrastructure/*"],
+      "@domain/*": ["src/app/domain/*"],
+      "@application/*": ["src/app/application/*"],
       "@core/*": ["src/app/core/*"],
-      "@modules/*": ["src/app/modules/*"],
-      "@routing/*": ["src/app/routing/*"],
-      "@scaffolds/*": ["src/app/scaffolds/*"],
+      "@page/*": ["src/app/page/*"],
+      "@layout/*": ["src/app/layout/*"],
       "@shared/*": ["src/app/shared/*"],
       "@store/*": ["src/app/store/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@util/*": ["src/app/util/*"]
     }
   },
   "angularCompilerOptions": {

@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
-import { Icon } from '@core/assets/icons/enums/icon';
 import { IconComponent } from '@shared/icon/icon.component';
 import { SharedModule } from 'primeng/api';
+import { Icon } from '@core/asset/icon/enum/icon';
 
 @Component({
   selector: 'app-toggle-button',

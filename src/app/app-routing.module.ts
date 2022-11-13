@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouterPathFragment } from '@routing/enums/router-path-fragment';
-import { MainScaffoldComponent } from '@scaffolds/components/main-scaffold/main-scaffold.component';
+import { MainLayoutComponent } from '@layout/component/main-layout/main-layout.component';
+import { RouterPathFragment } from '@core/routing/enum/router-path-fragment';
 
 const routes: Routes = [
   {
     path: RouterPathFragment.EMPTY,
-    component: MainScaffoldComponent,
+    component: MainLayoutComponent,
     title: 'Strona główna',
     children: [
       {
         path: RouterPathFragment.ROOMS,
         loadChildren: () =>
-          import('@modules/room/room.module').then((m) => m.RoomModule),
+          import('@page/room/room-routing').then(
+            ({ RoomRouting }) => RoomRouting,
+          ),
       },
     ],
   },
