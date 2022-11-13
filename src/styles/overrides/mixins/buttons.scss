@@ -1,9 +1,0 @@
-@mixin button-content($padding: 1rem, $icon-size: 1rem) {
-  padding: $padding;
-}
-
-@mixin button-icon($size: 1rem) {
-  .p-button-icon {
-    font-size: $size;
-  }
-}

@@ -1,0 +1,11 @@
+@use '../mixins/button';
+@use 'src/styles/variables/sizes';
+
+$_icon-size: sizes.$size-16 !default;
+$_button-padding: sizes.$size-12 !default;
+
+.p-button {
+  @include button.content($padding: $_button-padding);
+  @include button.icon($size: $_icon-size);
+  @include button.label();
+}

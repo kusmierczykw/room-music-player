@@ -1,8 +1,0 @@
-@use 'src/styles/overrides/mixins/buttons';
-
-$size: 1rem !default;
-
-.p-button {
-  @include buttons.button-content($padding: 1rem);
-  @include buttons.button-icon($size: $size);
-}

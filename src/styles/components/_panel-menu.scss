@@ -1,0 +1,18 @@
+@use '/src/styles/variables/sizes';
+@use '/src/styles/mixins/panel-menu';
+
+$_item-border-radius: sizes.$size-6 !default;
+$_item-outline-color: #bfdbfe !default;
+$_item-text-color: #6c757d !default;
+$_item-text-highlight-color: $_item-text-color !default;
+$_item-padding: 1rem !default;
+
+.p-panelmenu {
+  @include panel-menu.content(
+    $item-border-radius: $_item-border-radius,
+    $item-outline-color: $_item-outline-color,
+    $item-text-color: $_item-text-color,
+    $item-text-highlight-color: $_item-text-highlight-color,
+    $item-padding: $_item-padding
+  );
+}

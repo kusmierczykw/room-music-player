@@ -1,0 +1,15 @@
+@mixin content($padding) {
+  padding: $padding;
+}
+
+@mixin label() {
+  .p-button-label {
+    font-weight: 500;
+  }
+}
+
+@mixin icon($size) {
+  .p-button-icon {
+    font-size: $size;
+  }
+}

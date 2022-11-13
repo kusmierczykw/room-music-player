@@ -23,7 +23,7 @@ export class SidebarMainMenuProvider implements MenuProvider {
     private readonly routerLinkNavigate: RouterLinkNavigateService,
   ) {}
 
-  source$(): Observable<Menu> {
+  source(): Observable<Menu> {
     return of(
       new Menu([
         this.builder

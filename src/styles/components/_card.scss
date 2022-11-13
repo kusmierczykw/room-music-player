@@ -1,0 +1,8 @@
+@use '../mixins/card';
+@use 'src/styles/variables/colors';
+
+$_content-text-color: colors.$dark !default;
+
+.p-card {
+  @include card.content($text-color: $_content-text-color);
+}

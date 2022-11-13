@@ -1,18 +1,16 @@
-@use 'src/styles/overrides/mixins/panel-menus';
+@use 'src/styles/variables/sizes';
 
-$sidebar-background-color: white;
 $sidebar-height: 100%;
-$sidebar-header-height: 5rem;
+$sidebar-header-height: sizes.$navbar-height;
 $sidebar-padding: 0 1rem;
 
 :host {
-  background-color: $sidebar-background-color;
-  height: $sidebar-height;
-  padding: $sidebar-padding;
-  display: flex;
-  flex-direction: column;
-
   .sidebar {
+    height: $sidebar-height;
+    padding: $sidebar-padding;
+    display: flex;
+    flex-direction: column;
+
     &__header {
       height: $sidebar-header-height;
       flex: $sidebar-header-height 0 0;
@@ -21,7 +19,7 @@ $sidebar-padding: 0 1rem;
       align-items: center;
     }
 
-    &__menu {
+    &__nav {
       &.scrollable {
         overflow: auto;
       }

@@ -1,0 +1,4 @@
+@mixin content($text-color) {
+  color: $text-color;
+  box-shadow: none;
+}

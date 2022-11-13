@@ -1,36 +1,68 @@
-@use '../../../../styles/variables';
+@use 'src/styles/variables/sizes';
+@use 'src/styles/variables/colors';
+@use 'src/styles/mixins/glassmorphism';
 
-$sidebar-width: variables.$sidebar-width;
+$sidebar-width: sizes.$sidebar-width;
 $sidebar-height: 100vh;
+$sidebar-background-color: colors.$light;
+
+$navbar-background-color: colors.$light;
 $navbar-z-index: 100;
+
 $page-content-height: 120vh;
-$page-content-margin: variables.$size-32 variables.$size-28;
+$page-content-margin: sizes.$size-32 sizes.$size-28;
+
+$footer-background-color: colors.$light;
 
 :host {
-  display: flex;
+  .main-layout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto minmax(100vh, auto) auto;
+    grid-template-areas:
+      'sidebar navbar'
+      'sidebar content'
+      'sidebar footer';
 
-  .main {
     &__sidebar {
+      @include glassmorphism.glassmorphism($color: $sidebar-background-color);
+
       width: $sidebar-width;
       height: $sidebar-height;
+      grid-area: sidebar;
       top: 0;
       position: sticky;
-      flex: 0 0 auto;
+      grid-column: 1 / 2;
     }
 
     &__content {
-      flex: 1;
+      padding: $page-content-margin;
+      overflow: hidden;
+      grid-area: content;
+      grid-column: 2 / 3;
     }
 
     &__navbar {
       z-index: $navbar-z-index;
+      grid-area: navbar;
       top: 0;
       position: sticky;
+
+      &.scrolled {
+        @include glassmorphism.glassmorphism($color: $navbar-background-color);
+      }
+
+      &-nav {
+        margin-left: auto;
+
+        ::ng-deep .p-menuitem-link {
+          padding: sizes.$size-8 sizes.$size-16;
+        }
+      }
     }
 
-    &__page {
-      margin: $page-content-margin;
-      min-height: $page-content-height;
+    &__footer {
+      @include glassmorphism.glassmorphism($color: $footer-background-color);
     }
   }
 }

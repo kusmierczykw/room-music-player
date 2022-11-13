@@ -1,19 +1,32 @@
-<aside class="main__sidebar">
-  <app-sidebar></app-sidebar>
-</aside>
+<div class="main-layout">
+  <aside class="main-layout__sidebar">
+    <app-sidebar>
+      <ng-container *ngIf="sidebarMenu$ | async as menu">
+        <app-panel-menu [menu]="menu"></app-panel-menu>
+      </ng-container>
+    </app-sidebar>
+  </aside>
 
-<div class="main__content">
-  <nav class="main__navbar">
-    <app-navbar></app-navbar>
+  <nav
+    class="main-layout__navbar"
+    [class.scrolled]="isScrolledDown$ | async"
+  >
+    <app-navbar>
+      <div class="main-layout__navbar-nav">
+        <ng-container *ngIf="navbarMenu$ | async as menu">
+          <app-menubar [menu]="menu"></app-menubar>
+        </ng-container>
+      </div>
+    </app-navbar>
   </nav>
 
-  <main class="main__page">
+  <main class="main-layout__content">
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>
   </main>
 
-  <footer class="main__footer">
+  <footer class="main-layout__footer">
     <app-footer></app-footer>
   </footer>
 </div>

@@ -7,10 +7,14 @@ import { RoomApi } from '@infrastructure/room/api/room-api';
 import { CreateRoom } from '@domain/room/type/create-room';
 import { CreateRoomRequest } from '@infrastructure/room/api/request/create-room.request';
 import { FetchByIdRequest } from '@infrastructure/core/api/request/fetch-by-id.request';
+import { RoomApiResponseConverter } from '@infrastructure/room/converter/room-api-response.converter';
 
 @Injectable()
 export class RoomResource implements RoomRepository {
-  constructor(private readonly api: RoomApi) {}
+  constructor(
+    private readonly api: RoomApi,
+    private readonly roomApiResponseConverter: RoomApiResponseConverter,
+  ) {}
 
   create(room: CreateRoom): Observable<RoomId> {
     const { name } = room;
@@ -24,14 +28,16 @@ export class RoomResource implements RoomRepository {
 
     return this.api
       .fetchById(request)
-      .pipe(map((response) => response.toDomain()));
+      .pipe(map(this.roomApiResponseConverter.toDomain));
   }
 
   fetchRooms(): Observable<Room[]> {
     return this.api
       .fetchCollection()
       .pipe(
-        map((collection) => collection.items.map((item) => item.toDomain())),
+        map((collection) =>
+          collection.items.map(this.roomApiResponseConverter.toDomain),
+        ),
       );
   }
 }

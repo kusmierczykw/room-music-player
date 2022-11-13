@@ -1,7 +1,0 @@
-@use 'src/styles/overrides/mixins/cards';
-@use 'src/styles/utils/box-shadow';
-
-.p-card {
-  @include cards.card;
-  @include box-shadow.shadow-0;
-}

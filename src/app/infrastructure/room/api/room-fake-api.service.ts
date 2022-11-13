@@ -5,7 +5,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { CreateRoomResponse } from '@infrastructure/room/api/response/create-room.response';
 import { RoomResponse } from '@infrastructure/room/api/response/room.response';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { ChangeRoomNameRequest } from '@infrastructure/room/api/request/change-room-name.request';
 import { isNullable } from '@util/type/nullable/is-nullable';
 import { FetchByIdRequest } from '@infrastructure/core/api/request/fetch-by-id.request';
 import { CollectionResponse } from '@infrastructure/core/api/response/collection.response';
@@ -62,21 +61,6 @@ export class RoomFakeApiService implements RoomApi {
     const total = this.rooms.length;
 
     return of(new CollectionResponse(rooms, new CollectionMetaResponse(total)));
-  }
-
-  changeName(request: ChangeRoomNameRequest): Observable<void> {
-    const { id, name } = request;
-    const room = this.findById(id);
-
-    if (isNullable(room)) {
-      return throwError(
-        () => new HttpErrorResponse({ status: HttpStatusCode.NotFound }),
-      );
-    }
-
-    room.name = name;
-
-    return of(void 0);
   }
 
   private findById = (id: RoomId) =>

@@ -18,7 +18,7 @@ export class SidebarRoomMenuProvider implements MenuProvider {
     private readonly routerLinkProvider: RouterLinkProvider,
   ) {}
 
-  source$(): Observable<Menu> {
+  source(): Observable<Menu> {
     return this.room.fetchList().pipe(
       map(
         (rooms) =>

@@ -1,0 +1,6 @@
+@use 'src/styles/variables/sizes';
+
+@mixin glassmorphism($color, $blur: sizes.$size-8, $transparency: 0.8) {
+  background-color: rgba($color, $transparency);
+  backdrop-filter: blur($blur);
+}
