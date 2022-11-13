@@ -23,9 +23,9 @@ export class SidebarRoomMenuProviderService implements MenuProvider {
       map(
         (rooms) =>
           new Menu(
-            rooms.map(({ id, label }) =>
+            rooms.map(({ id, name }) =>
               this.builder
-                .label(label)
+                .label(name)
                 .initRouterLink(() =>
                   this.routerLinkProvider.routerLink(RouterPath.ROOM_UPDATE, {
                     [RouterPathParam.ROOM_ID]: id,

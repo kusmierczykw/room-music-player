@@ -25,12 +25,6 @@ $sidebar-padding: 0 1rem;
       &.scrollable {
         overflow: auto;
       }
-
-      &.rooms {
-        ::ng-deep .p-panelmenu {
-          @include panel-menus.panel-menu($item-font-weight: normal);
-        }
-      }
     }
   }
 }

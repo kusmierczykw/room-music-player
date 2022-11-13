@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OrderListModule } from 'primeng/orderlist';
 import { OrderListModels } from '@shared/order-list/types/order-list-models';
 import { OrderListItemTemplateRef } from '@shared/order-list/types/order-list-item-template-ref';
-import { isNil } from '@utils/types/nil';
+import { isNil } from '@utils/types/nullable';
 import { RequiredInputParameterException } from '@core/exceptions/required-input-parameter-exception';
 import { ControlsVisibilityDirective } from '@shared/order-list/directives/controls-visibility.directive';
 

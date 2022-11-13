@@ -4,24 +4,28 @@ import { RouterLinkParts } from '@routing/types/router-link-parts';
 import { RouterLinkPart } from '@routing/types/router-link-part';
 import { RouterPathParam } from '@routing/enums/router-path-param';
 import { RouterPathParamValueNotFoundException } from '@routing/exceptions/router-path-param-value-not-found.exception';
-import { isNil, Nil } from '@utils/types/nil';
-import { keyByValue } from '@utils/types/enums';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 import { RouterLink } from '@routing/types/router-link';
+import { keyByValue } from '@utils/types/enums/key-by-value';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouterLinkParamsProcessorService {
-  process(parts: RouterLinkParts, params?: Nil<RouterPathParams>): RouterLink {
+  process(
+    parts: RouterLinkParts,
+    params?: Nullable<RouterPathParams>,
+  ): RouterLink {
     return parts.map((part: RouterLinkPart) => {
       if (!this.isRouterPathParam(part)) {
         return part;
       }
 
-      if (!isNil(params)) {
+      if (!isNullable(params)) {
         const value = params[part];
 
-        if (!isNil(value)) {
+        if (!isNullable(value)) {
           return value;
         }
       }

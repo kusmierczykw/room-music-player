@@ -15,11 +15,11 @@ export const roomInitialState: RoomState = roomAdapter.getInitialState({
   entities: {
     '4789a521-ecb1-463b-b7ce-04cfff357dd0': {
       id: '4789a521-ecb1-463b-b7ce-04cfff357dd0',
-      label: 'Ten lepszy pokój',
+      name: 'Ten lepszy pokój',
     },
     '10567cd6-6403-4f17-83f3-1b5b7d901a57': {
       id: '10567cd6-6403-4f17-83f3-1b5b7d901a57',
-      label: 'Pokój u Darka',
+      name: 'Pokój u Darka',
     },
   },
 });

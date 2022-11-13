@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from '@shared/menu/models/menu-item';
 import { MenuItem as PrimengMenuItem } from 'primeng/api';
-import { isNil, Nil } from '@utils/types/nil';
-import { valueOrUndefined } from '@utils/types/nil/value-or-undefined';
+import { valueOrUndefined } from '@utils/types/nullable/value-or-undefined';
 import { IconProviderService } from '@core/assets/icons/providers/icon-provider.service';
 import { Icon } from '@core/assets/icons/enums/icon';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 
 @Injectable({
   providedIn: 'root',
@@ -27,16 +28,16 @@ export class PrimengMenuItemsConverterService {
     };
   }
 
-  private prepareChildren(children: Nil<MenuItem[]>) {
-    if (isNil(children)) {
+  private prepareChildren(children: Nullable<MenuItem[]>) {
+    if (isNullable(children)) {
       return children;
     }
 
     return children.map((item) => this.convert(item));
   }
 
-  private prepareCssIcon(icon: Nil<Icon>): Nil<string> {
-    if (isNil(icon)) {
+  private prepareCssIcon(icon: Nullable<Icon>): Nullable<string> {
+    if (isNullable(icon)) {
       return icon;
     }
 

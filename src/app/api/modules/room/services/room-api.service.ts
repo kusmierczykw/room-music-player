@@ -8,6 +8,7 @@ import { FetchByIdRequest } from '@api/modules/common/requests/fetch-by-id-reque
 import { RoomResponse } from '@api/modules/room/responses/room-response';
 import { CollectionResponse } from '@api/modules/common/responses/collection-response';
 import { HttpClient } from '@angular/common/http';
+import { ChangeRoomNameRequest } from '@api/modules/room/requests/change-room-name-request';
 
 @Injectable()
 export class RoomApiService implements RoomApi {
@@ -22,6 +23,10 @@ export class RoomApiService implements RoomApi {
   }
 
   fetchCollection(): Observable<CollectionResponse<RoomResponse>> {
+    throw new UnimplementedMethodException();
+  }
+
+  changeName(request: ChangeRoomNameRequest): Observable<void> {
     throw new UnimplementedMethodException();
   }
 }

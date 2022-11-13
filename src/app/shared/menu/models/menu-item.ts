@@ -1,7 +1,8 @@
 import { MenuItemType } from '../enums/menu-item-type';
 import { RouterLink } from '@routing/types/router-link';
 import { MenuItemCommand } from '../types/menu-item-command';
-import { isNil, Nil } from '@utils/types/nil';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 import { combineLatest, map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Icon } from '@core/assets/icons/enums/icon';
 
@@ -12,11 +13,11 @@ export class MenuItem {
     private readonly _visibility$: Observable<boolean>,
     readonly label: string,
     readonly type: MenuItemType,
-    readonly routerLink?: Nil<RouterLink>,
-    readonly link?: Nil<string>,
-    readonly command?: Nil<MenuItemCommand>,
-    readonly children?: Nil<MenuItem[]>,
-    readonly icon?: Nil<Icon>,
+    readonly routerLink?: Nullable<RouterLink>,
+    readonly link?: Nullable<string>,
+    readonly command?: Nullable<MenuItemCommand>,
+    readonly children?: Nullable<MenuItem[]>,
+    readonly icon?: Nullable<Icon>,
   ) {
     this.visibility$ = this.visibilitySource$();
   }
@@ -29,7 +30,7 @@ export class MenuItem {
             return of(visible);
           }
 
-          if (isNil(this.children)) {
+          if (isNullable(this.children)) {
             return of(visible);
           }
 
@@ -40,7 +41,7 @@ export class MenuItem {
   }
 
   private childrenVisibility$(): Observable<boolean> {
-    if (isNil(this.children)) {
+    if (isNullable(this.children)) {
       return of(false);
     }
 

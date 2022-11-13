@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { DD_MM_YYYY } from '@core/locale/consts/date-format';
-import { isNil, Nil } from '@utils/types/nil';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 
-type DatePipeValue = Nil<Date | string | number>;
+type DatePipeValue = Nullable<Date | string | number>;
 
 @Pipe({
   name: 'dateFormat',
@@ -17,8 +18,8 @@ export class DateFormatPipe implements PipeTransform {
     format = DD_MM_YYYY,
     timezone?: string,
     locale?: string,
-  ): Nil<string> {
-    return isNil(value)
+  ): Nullable<string> {
+    return isNullable(value)
       ? value
       : this.datePipe.transform(value, format, timezone, locale);
   }

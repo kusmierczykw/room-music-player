@@ -9,8 +9,8 @@ import { Menu } from '@shared/menu/models/menu';
 import { RoomService } from '@modules/room/services/room.service';
 import { RouterPathParam } from '@routing/enums/router-path-param';
 import { RouterLinkNavigateService } from '@routing/services/router-link-navigate.service';
-import { Room } from '@store/modules/room/models/room.model';
 import { Icon } from '@core/assets/icons/enums/icon';
+import { Room } from '@modules/room/store/models/room.model';
 
 @Injectable({
   providedIn: 'root',

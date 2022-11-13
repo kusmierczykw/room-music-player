@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RouterPathParam } from '@routing/enums/router-path-param';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { isNil } from '@utils/types/nil';
+import { isNil } from '@utils/types/nullable';
 import { NotFoundException } from '@core/exceptions/not-found-exception';
 import { Uuid } from '@core/uuid/types/uuid';
 import { map, Observable } from 'rxjs';

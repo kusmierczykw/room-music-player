@@ -5,11 +5,12 @@ import { Observable, of, throwError } from 'rxjs';
 import { CreateRoomResponse } from '@api/modules/room/responses/create-room-response';
 import { FetchByIdRequest } from '@api/modules/common/requests/fetch-by-id-request';
 import { RoomResponse } from '@api/modules/room/responses/room-response';
-import { isNil } from '@utils/types/nil';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Uuid } from '@core/uuid/types/uuid';
 import { CollectionResponse } from '@api/modules/common/responses/collection-response';
 import { CollectionMetaResponse } from '@api/modules/common/responses/collection-meta-response';
+import { ChangeRoomNameRequest } from '@api/modules/room/requests/change-room-name-request';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 
 @Injectable()
 export class RoomFakeApiService implements RoomApi {
@@ -45,7 +46,7 @@ export class RoomFakeApiService implements RoomApi {
     const { id } = request;
     const room = this.findById(id);
 
-    if (isNil(room)) {
+    if (isNullable(room)) {
       return throwError(
         () => new HttpErrorResponse({ status: HttpStatusCode.NotFound }),
       );
@@ -61,6 +62,21 @@ export class RoomFakeApiService implements RoomApi {
     const total = this.rooms.length;
 
     return of(new CollectionResponse(rooms, new CollectionMetaResponse(total)));
+  }
+
+  changeName(request: ChangeRoomNameRequest): Observable<void> {
+    const { id, name } = request;
+    const room = this.findById(id);
+
+    if (isNullable(room)) {
+      return throwError(
+        () => new HttpErrorResponse({ status: HttpStatusCode.NotFound }),
+      );
+    }
+
+    room.name = name;
+
+    return of(void 0);
   }
 
   private findById = (id: Uuid) =>

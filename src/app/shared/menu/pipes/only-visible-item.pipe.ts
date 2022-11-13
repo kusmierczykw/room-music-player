@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { MenuItem } from '@shared/menu/models/menu-item';
-import { isNil, Nil } from '@utils/types/nil';
 import { combineLatest, map, Observable, of, switchMap } from 'rxjs';
 import { MenuItemBuilderService } from '@shared/menu/builders/menu-item-builder.service';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 
 @Pipe({
   name: 'onlyVisibleItems',
@@ -11,8 +12,8 @@ import { MenuItemBuilderService } from '@shared/menu/builders/menu-item-builder.
 export class OnlyVisibleItemsPipe implements PipeTransform {
   constructor(private readonly builder: MenuItemBuilderService) {}
 
-  transform(items: Nil<MenuItem[]>): Nil<Observable<MenuItem[]>> {
-    if (isNil(items)) {
+  transform(items: Nullable<MenuItem[]>): Nullable<Observable<MenuItem[]>> {
+    if (isNullable(items)) {
       return items;
     }
 
@@ -30,7 +31,7 @@ export class OnlyVisibleItemsPipe implements PipeTransform {
 
             const { children } = item;
 
-            if (isNil(children)) {
+            if (isNullable(children)) {
               return of(item);
             }
 
@@ -48,8 +49,10 @@ export class OnlyVisibleItemsPipe implements PipeTransform {
         ),
       ),
     ).pipe(
-      map((items: Nil<MenuItem>[]) =>
-        items.filter((item: Nil<MenuItem>): item is MenuItem => !isNil(item)),
+      map((items: Nullable<MenuItem>[]) =>
+        items.filter(
+          (item: Nullable<MenuItem>): item is MenuItem => !isNullable(item),
+        ),
       ),
     );
   }

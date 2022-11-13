@@ -5,7 +5,7 @@ import {
   Input,
   Renderer2,
 } from '@angular/core';
-import { isNil } from '@utils/types/nil';
+import { isNil } from '@utils/types/nullable';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector

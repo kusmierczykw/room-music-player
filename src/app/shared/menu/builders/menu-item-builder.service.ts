@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { isNil, Nil } from '@utils/types/nil';
+import { Nullable } from '@utils/types/nullable/nullable';
+import { isNullable } from '@utils/types/nullable/is-nullable';
 import { RouterLink } from '@routing/types/router-link';
 import { MenuItemCommand } from '../types/menu-item-command';
 import { MenuItem } from '../models/menu-item';
@@ -12,14 +13,14 @@ import { Icon } from '@core/assets/icons/enums/icon';
   providedIn: 'root',
 })
 export class MenuItemBuilderService {
-  private _label: Nil<string>;
-  private _type: Nil<MenuItemType>;
-  private _routerLink: Nil<RouterLink>;
-  private _link: Nil<string>;
-  private _command: Nil<MenuItemCommand>;
-  private _children: Nil<MenuItem[]>;
-  private _visible$: Nil<Observable<boolean>>;
-  private _icon: Nil<Icon>;
+  private _label: Nullable<string>;
+  private _type: Nullable<MenuItemType>;
+  private _routerLink: Nullable<RouterLink>;
+  private _link: Nullable<string>;
+  private _command: Nullable<MenuItemCommand>;
+  private _children: Nullable<MenuItem[]>;
+  private _visible$: Nullable<Observable<boolean>>;
+  private _icon: Nullable<Icon>;
 
   newInstance(): MenuItemBuilderService {
     return new MenuItemBuilderService();
@@ -152,7 +153,7 @@ export class MenuItemBuilderService {
   }
 
   private configureDefaultType(): void {
-    if (!isNil(this._type)) {
+    if (!isNullable(this._type)) {
       return;
     }
 
@@ -160,7 +161,7 @@ export class MenuItemBuilderService {
   }
 
   private configureDefaultVisible(): void {
-    if (!isNil(this._visible$)) {
+    if (!isNullable(this._visible$)) {
       return;
     }
 
@@ -168,7 +169,7 @@ export class MenuItemBuilderService {
   }
 
   private requireType(): void {
-    if (!isNil(this._type)) {
+    if (!isNullable(this._type)) {
       return;
     }
 
@@ -176,7 +177,7 @@ export class MenuItemBuilderService {
   }
 
   private requireRouterLink(): void {
-    if (!isNil(this._routerLink)) {
+    if (!isNullable(this._routerLink)) {
       return;
     }
 
@@ -184,7 +185,7 @@ export class MenuItemBuilderService {
   }
 
   private requireCommand(): void {
-    if (!isNil(this._command)) {
+    if (!isNullable(this._command)) {
       return;
     }
 
@@ -192,7 +193,7 @@ export class MenuItemBuilderService {
   }
 
   private requireLink(): void {
-    if (!isNil(this._link)) {
+    if (!isNullable(this._link)) {
       return;
     }
 
